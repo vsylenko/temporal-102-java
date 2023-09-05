@@ -13,7 +13,7 @@ tasks:
   - name: Microservice
     command: |
       source /workspace/edu-102-java-code/.bash_aliases
-      cd utilities
+      cd utilities/microservice
       mvn clean compile
       mvn exec:java -Dexec.mainClass="translationapi.Microservice"
       echo "Translation Microservice running on this terminal"
@@ -30,7 +30,7 @@ tasks:
       source /workspace/edu-102-java-code/.bash_aliases
       clear
       echo "Use this terminal to run your Worker"
-    openMode: tab-after
+    openMode: split-right
   - name: Terminal
     command: |
       gp open README.md
