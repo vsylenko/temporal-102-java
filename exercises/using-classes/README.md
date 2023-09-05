@@ -83,7 +83,7 @@ Now that you've made the necessary changes, it's time to run the Workflow to ens
 
 1. Ensure that your Translation Microservice is running in a separate. See the 
 prerequisites at the top of this file for instructions. 
-2. In another terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.Worker"`
+2. In another terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
 3. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Mason de"` (replace `Mason` with your first name), which should display customized greeting and farewell messages in German.
 
 If your code didn't work as expected, go back and double-check your changes, possibly comparing them to the code in the `solution` directory.

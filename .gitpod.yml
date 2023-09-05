@@ -34,7 +34,7 @@ tasks:
   - name: Terminal
     command: |
       gp open README.md
-      pushd exercises/farewell-workflow/solution
+      pushd exercises/using-classes/solution
       mvn compile
       mvn clean
       popd
