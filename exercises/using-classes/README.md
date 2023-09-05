@@ -68,14 +68,13 @@ Now that you have defined the class, you must update the Activity code to use th
 You've now updated the Activity code to use the classes. The next step is to update the Workflow code to use these classes where it passes input to the Activity and access its return value.
 
 1. Edit the `TranslationWorkflow.java` file
-   1.
-2. 1. Edit the `TranslationWorkflowImpl.java` file
-   1. 
-2. Add a new line to define a `TranslationActivityInput` struct, populating it with the two fields (term and language code) currently passed as input to the first `ExecuteActivity` call
-3. Change the variable type used to access the result the first call to `ExecuteActivity` from `string` to `TranslationActivityOutput`
-4. Change that `ExecuteActivity` call to use the struct as input instead of the two parameters it now uses
-5. Update the `helloMessage` string so that it is based on the `Translation` field from the Activity output struct
-6. Repeat the previous four steps for the second call to `ExecuteActivity`, which translates "Goodbye" 
+   1. Update the method header to take a single input of type TranslationWorkflowInput as a parameter and return TranslationWorkflowOutput
+2. Edit the `TranslationWorkflowImpl.java` file
+   1. Create an instance of the `TranslationWorkflowInput` class to pass in to your Activity, populating it with the two fields (term and language code)
+   2. Update the call to `activities.TranslateTerm` to pass in the correct input (your new class `TranslationWorkflowInput`)
+   3. Update the `helloMessage` variable so that it takes the proper output type(your new class `TranslationWorkflowOutput`)
+   4. Update the `helloResult` variable to retrieve the output from the `helloMessage` variable using the appropriate getter method
+   5. Repeat the previous four steps for the second call to `activities.TranslateTerm`, which translates "Goodbye" 
 7. Save your changes
 
 
