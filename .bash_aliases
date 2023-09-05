@@ -1,4 +1,3 @@
-alias tctl="docker exec temporal-admin-tools temporal"
 alias workspace="cd ${GITPOD_REPO_ROOT}"
 alias webui="gp preview $(gp url 8080)"
 export PATH="$PATH:/home/gitpod/.temporalio/bin"
