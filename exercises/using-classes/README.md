@@ -36,14 +36,14 @@ of your activities.
 
 1. Edit the `TranslationActivityInput.java` file in the `model` directory and finish
 defining the `TranslateActivityInput` class 
-   1. Define an instance variable named `term` of type `String` and use the final modifier to ensure immutability
-   2. Define an instance variable named `languageCode` of type `String` and use the final modifier to ensure immutability
+   1. Define an instance variable named `term` of type `String`
+   2. Define an instance variable named `languageCode` of type `String` 
    3. Define a constructor that takes `term` and `languageCode` and stores the values in the appropriate instance variables
    4. Define the public methods `getTerm` and `getLanguageCode` to return the values stored in the instance variable
    5. Save your changes
 2. Edit the `TranslationActivityOutput.java` file in the `model` directory and finish
 defining the `TranslateActivityOutput` class 
-   1. Define a field named `translation` of type `String` and use the final modified to ensure immutability
+   1. Define a field named `translation` of type `String` 
    2. Define a constructor that takes `translation` and stores the values in the appropriate instance variable
    3. Define a public method `getTranslation` to return the value stored in the instance variable
    4. Save your changes
