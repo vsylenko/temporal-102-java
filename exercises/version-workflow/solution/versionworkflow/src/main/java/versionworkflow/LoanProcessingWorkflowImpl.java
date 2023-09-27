@@ -40,6 +40,8 @@ public class LoanProcessingWorkflowImpl implements LoanProcessingWorkflow {
 
       ChargeInput chargeInput = new ChargeInput(customerId, amount, period, numberOfPeriods);
 
+      activities.chargeCustomer(chargeInput);
+
       totalPaid += chargeInput.getAmount();
       logger.info("Payment complete for period: {} Total Paid: {}", period, totalPaid);
 
