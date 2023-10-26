@@ -8,18 +8,24 @@ import org.junit.jupiter.api.extension.RegisterExtension;
 import io.temporal.testing.TestWorkflowEnvironment;
 import io.temporal.testing.TestWorkflowExtension;
 import io.temporal.worker.Worker;
+import translationworkflow.model.TranslationActivityInput;
+import translationworkflow.model.TranslationActivityOutput;
 import translationworkflow.model.TranslationWorkflowInput;
 import translationworkflow.model.TranslationWorkflowOutput;
 
 public class TranslationWorkflowTest {
 
   @RegisterExtension
-  public static final TestWorkflowExtension testWorkflowExtension = TestWorkflowExtension
-      .newBuilder().setWorkflowTypes(TranslationWorkflowImpl.class).setDoNotStart(true).build();
+  public static final TestWorkflowExtension testWorkflowExtension = 
+      TestWorkflowExtension.newBuilder()
+          .setWorkflowTypes(TranslationWorkflowImpl.class)
+          .setDoNotStart(true)
+          .build();
 
   @Test
   public void testSuccessfulTranslation(TestWorkflowEnvironment testEnv, Worker worker,
       TranslationWorkflow workflow) {
+
     worker.registerActivitiesImplementations(new TranslationActivitiesImpl());
     testEnv.start();
 
