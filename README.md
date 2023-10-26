@@ -18,7 +18,7 @@ training course.
 | Directory Name           | Description                                                                             |
 | :----------------------- | :-------------------------------------------------------------------------------------- |
 | `samples/age-estimation` | [Calls a remote API to estimate a given name](samples/age-estimation)                   |
-| `samples/using-classes`  | [Demonstrate how classes are passed in as input and output data](samples/using-classes) |
+| `samples/using-classes-for-data`  | [Demonstrate how classes are passed in as input and output data](samples/using-classes-for-data) |
 
 ## Reference
 
