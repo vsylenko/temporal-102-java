@@ -48,26 +48,26 @@ environment**
    2. Include the term being translated and the language code 
 4. Optionally, add log statements at the Error level anywhere that the Activity throws an exception
 5. Near the bottom of the method, use the Debug level to log the successful translation
-	1. Include the translated term
+   1. Include the translated term
 6. Save your changes
 
 
 ## Part C: Add a Timer to the Workflow
 You will now add a Timer between the two Activity calls in the Workflow Definition, which will make it easier to observe durable execution in the next section.
 
-1. Add the import for Duration `import java.time.Duration;` which is used by the timer
-2. After the statement where `helloMessage` is defined, but before the statement where
+1. After the statement where `helloMessage` is defined, but before the statement where
    `goodbyeInput` is defined, add a new statement that logs the message `Sleeping between 
     translation calls` at the info level.
-3. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(30))` to set a Timer for 30 seconds
+2. Just after the new log statement, use `workflow.Sleep(Duration.ofSeconds(30))` to set a Timer for 30 seconds
 
 
 ## Part D: Observe Durable Execution
 It is typical to run Temporal applications using two or more Worker processes. Not only do additional Workers allow the application to scale, it also increases availability since another Worker can take over if a Worker crashes during Workflow Execution. You'll see this for yourself now and will learn more about how Temporal achieves this as you continue through the course.
 
-Before proceeding, make sure that there are no Workers running for this or any previous exercise. Also, please read through all of these instructions before you begin, so that you'll know when and how to react.
+Before proceeding, make sure that there are no Workers running for this or any previous exercise. Also, please read through all of these instructions before you begin, so that you'll know when and how to react. 
 
-1. In one terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
+1. Open a terminal, change to the `practice` subdirectory for this exercise, and run `mvn compile` to compile the code.
+2. In the same terminal, start the Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
 3. In another terminal, start a second Worker by running `mvn exec:java -Dexec.mainClass="translationworkflow.TranslationWorker"`
 4. In another terminal, execute the Workflow by running `mvn exec:java -Dexec.mainClass="translationworkflow.Starter" -Dexec.args="Stanislav sk"` (replace `Stanislav` with your first name) 
 5. Observe the output in the terminal windows used by each worker. 

@@ -7,15 +7,16 @@ import translationworkflow.model.TranslationActivityOutput;
 import translationworkflow.model.TranslationWorkflowInput;
 import translationworkflow.model.TranslationWorkflowOutput;
 import org.slf4j.Logger;
-
 import java.time.Duration;
 
 public class TranslationWorkflowImpl implements TranslationWorkflow {
 
   public static final Logger logger = Workflow.getLogger(TranslationWorkflowImpl.class);
 
-  ActivityOptions options =
-      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5)).build();
+  private final ActivityOptions options =
+      ActivityOptions.newBuilder()
+          .setStartToCloseTimeout(Duration.ofSeconds(5))
+          .build();
 
   private final TranslationActivities activities =
       Workflow.newActivityStub(TranslationActivities.class, options);
@@ -37,7 +38,7 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
     logger.info("Sleeping between translation calls");
     Workflow.sleep(Duration.ofSeconds(30));
 
-    logger.debug("Preparing to translate Goodbye into languageCode: {}", languageCode);
+    logger.debug("Preparing to translate goodbye into languageCode: {}", languageCode);
     TranslationActivityInput goodbyeInput = new TranslationActivityInput("goodbye", languageCode);
     TranslationActivityOutput goodbyeResult = activities.translateTerm(goodbyeInput);
     String goodbyeMessage = goodbyeResult.getTranslation() + ", " + name;

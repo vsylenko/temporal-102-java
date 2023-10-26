@@ -5,7 +5,6 @@ public class TranslationWorkflowOutput {
   private String goodbyeMessage;
 
   public TranslationWorkflowOutput() {
-
   }
 
   public TranslationWorkflowOutput(String helloMessage, String goodbyeMessage) {
@@ -29,6 +28,7 @@ public class TranslationWorkflowOutput {
     this.goodbyeMessage = goodbyeMessage;
   }
 
+  @Override
   public String toString() {
     return this.helloMessage + "\n" + this.goodbyeMessage;
   }
