@@ -95,17 +95,19 @@ uses floating point numbers to represent currency.
 
 1. Edit the `Starter.java` file, which creates the input data and starts 
    the Workflow
-   * Lines 42-56 create and populate Pizza class instances (`pizza1` and `pizza2`) representing 
-   pizzas, which are then added to an ArrayList named `items` used in the 
-   `PizzaOrder` class used as input to the Workflow. 
-3. Create and populate another Pizza class instance, named `pizza3`, representing a third
-   pizza added to the order. It should have the following values:
+   * Code in the `createPizzaOrder` method creates and populates two 
+     Pizza objects (`pizza1` and `pizza2`) and adds them to a list, 
+	 which represents the order and is used as input to the Workflow.
+2. Create and populate another Pizza object named `pizza3`, which 
+   represents a third pizza added to the order. It should have the 
+   following values:
    * Description: "Medium, with extra cheese"
-	* Price: 1300
-4. Add `pizza3` to the `items` ArrayList
-5. Save the changes and close the editor
-6. Compile your changes with `mvn clean compile`
-7. Submit this pizza order by starting the Workflow: `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"`
+   * Price: 1300
+3. Add `pizza3` to the order list
+4. Save the changes and close the editor
+5. Compile your changes with `mvn clean compile`
+6. Submit this pizza order by starting the Workflow: 
+   `mvn exec:java -Dexec.mainClass="pizzaworkflow.Starter"`
 
 Although the Workflow *should* complete within a few seconds, you will 
 probably find that it never does, so open the Web UI and look at the 
@@ -126,20 +128,18 @@ layout.
      discount did not write a test case for it. 
      Deploying the untested code is what led to this failure, but 
      writing a test now will help you to verify the fix. 
-2. Open the `activity_test.go` file in the editor
+2. Open the `PizzaActivitiesTest.java` file in the editor
 3. Add a new test by copying the existing `testSendBillTypicalOrder`
    function and renaming the new function as `testSendBillAppliesDiscount`, 
    and then make the following changes to it:
    * Change the `description` to `5 large cheese pizzas`
    * Change the `amount` to `6500` ($65)
-   * Change the comment next to the `amount` field to say 
-     `amount qualifies for discount`
    * Change the expected price in the `assertEquals` statement to `6000`, 
      which is the $65 amount minus the $5 discount.
 4. Save the changes and close the editor
 5. Run `mvn test`. Since you have not yet fixed the bug, the test will fail.
-6. Open the `PizzaActivities.java` file in the editor and find where the `sendBill` 
-   Activity is defined.
+6. Open the `PizzaActivitiesImpl.java` file in the editor and find where 
+   the `sendBill` Activity is defined.
 7. Examine the code where the discount is applied. Once you spot the bug, 
    fix it. 
 8. Save your changes and close the editor
