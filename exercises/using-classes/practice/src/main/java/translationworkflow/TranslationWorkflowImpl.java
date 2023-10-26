@@ -11,8 +11,10 @@ import java.time.Duration;
 
 public class TranslationWorkflowImpl implements TranslationWorkflow {
 
-  ActivityOptions options =
-      ActivityOptions.newBuilder().setStartToCloseTimeout(Duration.ofSeconds(5)).build();
+  private final ActivityOptions options =
+      ActivityOptions.newBuilder()
+          .setStartToCloseTimeout(Duration.ofSeconds(5))
+          .build();
 
   private final TranslationActivities activities =
       Workflow.newActivityStub(TranslationActivities.class, options);
@@ -22,28 +24,28 @@ public class TranslationWorkflowImpl implements TranslationWorkflow {
     String name = input.getName();
     String languageCode = input.getLanguageCode();
 
-    // TODO Create an instance of your Activity input class and pass
-    // in the parameters from the "activities.translateTerm()"" call below (line 31)
+    // TODO Create an instance of your Activity input class, passing in the
+    // two parameters from the "activities.translateTerm()" call below
 
     // TODO Replace "String" below with your Activity output class
     // TODO Replace the parameters in the call to "translateTerm" below with
     // the instance of your input class
     String helloResult = activities.translateTerm("hello", languageCode);
 
-    // TODO Update the "helloResult" variable below to use the getter method
-    // to retrieve the input from the class instance
+    // TODO Update the "helloResult" variable below to retrieve the translation
+    // from the object returned by the Activity 
     String helloMessage = helloResult + ", " + name;
 
-    // TODO Create an instance of your Activity input class and pass
-    // in the parameters from the "activities.translateTerm()"" call below (line 43)
+    // TODO Create an instance of your Activity input class, passing in
+    // in the parameters from the "activities.translateTerm()" call below
 
     // TODO Replace "String" below with your Activity output class
     // TODO Replace the parameters in the call to "translateTerm" below with
     // the instance of your input class
     String goodbyeResult = activities.translateTerm("goodbye", languageCode);
 
-    // TODO Update the "helloResult" variable below to use the getter method
-    // to retrieve the input from the class instance
+    // TODO Update the "goodbyeResult" variable below to retrieve the translation
+    // from the object returned by the Activity
     String goodbyeMessage = goodbyeResult + ", " + name;
 
     return new TranslationWorkflowOutput(helloMessage, goodbyeMessage);
