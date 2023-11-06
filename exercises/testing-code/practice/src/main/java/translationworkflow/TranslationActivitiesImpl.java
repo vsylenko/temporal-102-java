@@ -91,7 +91,8 @@ public class TranslationActivitiesImpl implements TranslationActivities {
       }
 
     } catch (IOException e) {
-      e.printStackTrace();
+      logger.error(e.getMessage());
+      throw Activity.wrap(e);
     }
 
     logger.debug("Translation was successful with output: " + result.getTranslation());
