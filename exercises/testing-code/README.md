@@ -66,8 +66,6 @@ returns the appropriate error when called with an invalid language code.
 ```java
   @Test
   public void testFailedTranslateActivityBadLanguageCode() {
-     testEnvironment.registerActivitiesImplementations(new TranslationActivitiesImpl());
-     TranslationActivities activity = testEnvironment.newActivityStub(TranslationActivities.class);
      TranslationActivityInput input = new TranslationActivityInput("goodbye", "xq");
 
      // Assert that an error was thrown and it was an Activity Failure
