@@ -30,6 +30,17 @@ environment**
 4. Start the microservice
    1. `mvn exec:java -Dexec.mainClass="translationapi.Microservice"`
 
+### GitPod Environment Shortcuts
+
+If you are executing the exercises in the provided GitPod environment, you
+can take advantage of certain aliases to aid in navigation and execution of
+the code.
+
+| Command | Action                                  |
+| :------ | :-------------------------------------- |
+| `ex2`   | Change to Exercise 2 Practice Directory |
+| `ex2s`  | Change to Exercise 2 Solution Directory |
+
 ## Part A: Running a Test
 
 We have provided a unit test for the `translateTerm` Activity
