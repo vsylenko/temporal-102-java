@@ -93,7 +93,7 @@ public class TranslationActivitiesImpl implements TranslationActivities {
       }
 
     } catch (IOException e) {
-      e.printStackTrace();
+      throw Activity.wrap(e);
     }
     // TODO: Add a debug log statement here stating the Translation was successful
     // include the output
