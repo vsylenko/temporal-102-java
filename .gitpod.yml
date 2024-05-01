@@ -50,8 +50,9 @@ tasks:
       source /workspace/edu-102-java-code/.bash.cfg
       cd utilities/microservice
       mvn clean compile
-      mvn exec:java -Dexec.mainClass="translationapi.Microservice"
       echo "Translation Microservice running on this terminal"
+      mvn exec:java -Dexec.mainClass="translationapi.Microservice"
+    openMode: split-right
 
 ports:
   - name: Temporal server
