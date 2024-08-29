@@ -7,44 +7,46 @@ import translationworkflow.model.TranslationActivityOutput;
 import translationworkflow.model.TranslationWorkflowInput;
 import translationworkflow.model.TranslationWorkflowOutput;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.time.Duration;
 
 public class TranslationWorkflowImpl implements TranslationWorkflow {
 
-  // TODO: Define the Workflow logger
+  private static final Logger logger = LoggerFactory.getLogger(TranslationWorkflowImpl.class);
 
-  private final ActivityOptions options =
-      ActivityOptions.newBuilder()
-          .setStartToCloseTimeout(Duration.ofSeconds(5))
-          .build();
+  private final ActivityOptions options = ActivityOptions.newBuilder()
+      .setStartToCloseTimeout(Duration.ofSeconds(5))
+      .build();
 
-  private final TranslationActivities activities =
-      Workflow.newActivityStub(TranslationActivities.class, options);
+  private final TranslationActivities activities = Workflow.newActivityStub(TranslationActivities.class, options);
 
   @Override
   public TranslationWorkflowOutput sayHelloGoodbye(TranslationWorkflowInput input) {
     String name = input.getName();
     String languageCode = input.getLanguageCode();
 
-    // TODO: Add a log statement at the info level stating that the Workflow has been invoked
-    // Be sure to include variable information
+    logger.info("Workflow has been invoked. Name: {}, Language Code: {}", name, languageCode);
 
     TranslationActivityInput helloInput = new TranslationActivityInput("hello", languageCode);
+    logger.debug("[ACTIVITY INVOKED] Translation Activity is going to be invoked. Message to be translated: {}, Language Code: {}",
+        helloInput.getTerm(), languageCode);
     TranslationActivityOutput helloResult = activities.translateTerm(helloInput);
     String helloMessage = helloResult.getTranslation() + ", " + name;
 
     // Wait a little while before saying goodbye
-    // TODO: Part C - Add a log statement at the info level stating "Sleeping between translation
-    // calls"
-    // TODO: Part C - Use Workflow.sleep to create a timer here for 30s
-    
-    
-    // TODO: Add a log statement here at the debug level stating that the Activity is going
-    // to be invoked. Be sure to include the word being translated and the language code.
+    logger.info("Sleeping between translation calls");
+    Workflow.sleep(Duration.ofSeconds(30));
+
+
     TranslationActivityInput goodbyeInput = new TranslationActivityInput("goodbye", languageCode);
+    logger.debug("[ACTIVITY INVOKED] Translation Activity is going to be invoked. Message to be translated: {}, Language Code: {}",
+        goodbyeInput.getTerm(), languageCode);
     TranslationActivityOutput goodbyeResult = activities.translateTerm(goodbyeInput);
     String goodbyeMessage = goodbyeResult.getTranslation() + ", " + name;
 
+    logger.debug("[ACTIVITY COMPLETED] Translation Activity completed. Translated hello: {}, goodbye: {}",
+        helloMessage, goodbyeMessage);
     return new TranslationWorkflowOutput(helloMessage, goodbyeMessage);
   }
 }
